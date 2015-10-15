@@ -1,0 +1,43 @@
+<apex:page controller="AccountLockController" showHeader="true" sidebar="false" tabStyle="Account" id="page">
+    <apex:form id="form">
+        <apex:pageBlock id="block" mode="edit">
+            <apex:pageMessages id="msg" />
+            <apex:pageBlockButtons id="buttons" location="bottom">
+                <apex:commandButton value="Search" action="{!doSearch}" reRender="form"  />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Search" id="section">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!$ObjectType.Account.Fields.Name.Label}" for="key" />
+                    <apex:inputText value="{!key}" required="false" id="key" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Results" rendered="{!wrapperList.size > 0}" mode="edit" id="resultBlock">
+            <apex:outputPanel layout="block" style="margin: 5px;">
+                <apex:commandButton value="Lock" action="{!doRecordLock}" reRender="form" />
+                <apex:commandButton value="UnLock" action="{!doRecordUnLock}" reRender="form" />
+            </apex:outputPanel>
+            <apex:pageBlockTable value="{!wrapperList}" var="item" id="blockTable">
+                <apex:column style="width: 20px;">
+                    <apex:facet name="header">
+                        <input type="checkbox" onChange="return allChecked(this, '{!wrapperList.size}');" id="headerCheck" />
+                    </apex:facet>
+                    <apex:inputCheckbox value="{!item.isChecked}" id="isChecked" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.Account.Fields.Name.Label}">
+                    <apex:outputLink value="/{!item.account.Id}" target="_blank">
+                        <apex:outputField value="{!item.account.Name}" />
+                    </apex:outputLink>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+        function allChecked(headerCheck, listSize) {
+            for (var i = 0; i < listSize; i++) {
+                document.getElementById('{!$Component.form:resultBlock:blockTable}:' + i + ':isChecked').checked = headerCheck.checked;
+            }
+            return false;
+        }
+    </script>
+</apex:page>
