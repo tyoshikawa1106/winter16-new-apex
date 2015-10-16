@@ -1,0 +1,25 @@
+<apex:page controller="AccountRecordTypeInfoController" sidebar="false" id="page" tabStyle="Account">
+    <apex:form id="form">
+        <apex:pageBlock title="Schema.RecordTypeInfo" id="block">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!recordTypeInfoWrapperList}" var="item">
+                    <apex:column headerValue="Name">
+                        <apex:outputText value="{!item.recordTypeName}" />
+                    </apex:column>
+                    <apex:column headerValue="ID">
+                        <apex:outputText value="{!item.recordTypeId}" />
+                    </apex:column>
+                    <apex:column headerValue="isAvailable">
+                        <apex:image value="/img/checkbox_{!IF(item.isAvailable, '', 'un')}checked.gif" title="{!IF(item.isAvailable, 'Checked', 'Not Checked')}" />
+                    </apex:column>
+                    <apex:column headerValue="isDefaultRecordTypeMapping">
+                        <apex:image value="/img/checkbox_{!IF(item.isDefaultRecordTypeMapping, '', 'un')}checked.gif" title="{!IF(item.isDefaultRecordTypeMapping, 'Checked', 'Not Checked')}" />
+                    </apex:column>
+                    <apex:column headerValue="isMaster (Winter'16 New Method)">
+                        <apex:image value="/img/checkbox_{!IF(item.isMaster, '', 'un')}checked.gif" title="{!IF(item.isMaster, 'Checked', 'Not Checked')}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
