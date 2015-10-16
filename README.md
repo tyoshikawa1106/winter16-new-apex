@@ -6,3 +6,11 @@
 
 ## ContentDocumentLink Trigger
 <img src="http://cdn-ak.f.st-hatena.com/images/fotolife/t/tyoshikawa1106/20151004/20151004213404.png" />
+
+
+## PageReference.getContent() in Asynchronous Apex
+```
+Database.executeBatch(new AccountPdfCreateBatch());
+```
+
+<img src="http://f.st-hatena.com/images/fotolife/t/tyoshikawa1106/20151015/20151015230046.png" />
