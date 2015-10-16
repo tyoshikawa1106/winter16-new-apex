@@ -18,3 +18,7 @@ Database.executeBatch(new AccountPdfCreateBatch());
 
 ## Schema.RecordTypeInfo - isMaster
 <img src="http://cdn-ak.f.st-hatena.com/images/fotolife/t/tyoshikawa1106/20151016/20151016212550.png" />
+
+
+## Schema.DescribeTabSetResult - getDescription
+<img src="http://cdn-ak.f.st-hatena.com/images/fotolife/t/tyoshikawa1106/20151016/20151016230926.png" />
